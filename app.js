@@ -1,0 +1,53 @@
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const User = require("./models/user");
+const Comment = require("./models/comment");
+const Post = require("./models/post");
+const passport = require("passport");
+const localStrategy = require("passport-local");
+const passportLocalMongoose = require("passport-local-mongoose");
+const indexRoutes = require("./routes/index");
+const addRoutes = require("./routes/add");
+const showRoutes = require("./routes/show");
+const updateRoutes = require("./routes/update");
+const deleteRoutes = require("./routes/delete");
+
+mongoose.connect("mongodb://localhost/poster_app_7", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+app.use(
+  require("express-session")({
+    secret: "hellobrother",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(function (req, res, next) {
+  res.locals.currentUser = req.user;
+  next();
+});
+
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use(indexRoutes);
+app.use(showRoutes);
+app.use(addRoutes);
+app.use(updateRoutes);
+app.use(deleteRoutes);
+
+const port = 3001;
+
+app.listen(port, function () {
+  console.log("server has started at port " + port);
+});

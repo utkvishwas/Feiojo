@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/addnew.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat:500,700&amp;display=swap"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Edit Comment</title>
+  </head>
+  <body>
+    <div class="heading">
+      <a href="/"><h1>Feiojo</h1></a>
+    </div>
+
+    <form action="/updatecomment/<%= commentdata._id %> " method="POST">
+      <div class="segment">
+        <h1>Edit Comment</h1>
+      </div>
+
+      <label>
+        <input
+          type="text"
+          placeholder="comment"
+          name="comment"
+          value="<%=commentdata.comment%>"
+          required
+        />
+      </label>
+
+      <button type="submit">Update</button>
+
+      <div class="segment">
+        <button class="unit" type="button">
+          <a href="/"><i class="icon ion-md-arrow-back"></i></a>
+        </button>
+      </div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/post.css" />
+    <link rel="stylesheet" href="/comment.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Montserrat:500,700&amp;display=swap"
+  />
+    <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet" />
+    <title><%=thatpost.title%></title>
+  </head>
+  <body>
+    <div class="heading">
+      <a href="/"><h1>Feiojo</h1></a>
+      <div class="userdetails">
+        <a href="#">Signed In as <%= currentUser.username %> </a>
+        <a href="/logout">Logout</a>
+        <a href="/addnew" class="addnew">Add New Post</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="postcard" style="width: 50%">
+        <p class="post-title"><%=thatpost.title%></p>
+        <img src="<%=thatpost.image%>" alt="" />
+        <p class="post-body"><%=thatpost.body%></p>
+        <div class="update">
+          <a href="/edit/<%=thatpost._id%>"
+            ><i class="lni lni-pencil edit"></i
+          ></a>
+          <a href="/delete/<%=thatpost._id%>"
+            ><i class="lni lni-trash delete"></i
+          ></a>
+        </div>
+        <div class="container comments-div">
+          <p>Comments</p>
+          <div class="container addnewcomment">
+            <form action="/addcomment" method="POST" class="commentform">
+              <input
+                class="commentdata"
+                type="text"
+                placeholder="Add Comment"
+                name="comment"
+              />
+              <input type="hidden" value="<%=thatpost._id%>" name="postid" />
+              <button type="submit" class="arrowbutton">
+                <i class="lni lni-arrow-right"></i>
+              </button>
+            </form>
+          </div>
+          <% thatpost.comments.forEach(function (commentdata) { %>
+          <div class="usercomments">
+            <p class="username"><%= commentdata.author.username %></p>
+            <p class="comment"><%=commentdata.comment%></p>
+            <a href="/comment/<%= commentdata._id %>/edit">edit</a>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

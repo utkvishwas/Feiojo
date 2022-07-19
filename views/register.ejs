@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="addnew.css" /> -->
+    <link rel="stylesheet" href="login.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Montserrat:500,700&amp;display=swap"
+  />
+    <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet" />
+    <title>Register</title>
+  </head>
+  <body>
+    <div class="heading">
+      <a href="/"><h1>Feiojo</h1></a>
+    </div>
+    <% if (err) { %>
+    <p style="text-align: center; color: red"><%= err %></p>
+    <% } %>
+    <form action="/register" method="POST">
+      <label for="username">Username</label>
+      <input type="text" name="username" />
+      <label for="password">Password</label>
+      <input type="password" name="password" />
+      <button>Register</button>
+    </form>
+    <div class="lastbutton">
+      <a href="/login"><button>LogIn</button></a>
+    </div>
+  </body>
+</html>

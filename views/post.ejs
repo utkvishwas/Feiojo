@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="post.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Montserrat:500,700&amp;display=swap"
+  />
+    <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet" />
+    <title>All the post</title>
+  </head>
+  <body>
+    <div class="heading">
+      <a href="/"><h1>Feiojo</h1></a>
+      <div class="userdetails">
+        <a href="#">Signed In as <%= currentUser.username %> </a>
+        <a href="/logout">Logout</a>
+        <a href="/addnew" class="addnew">Add New Post</a>
+      </div>
+    </div>
+
+    <%post.forEach(function(post){%>
+    <div class="container">
+      <div class="postcard">
+        <a href="/post/<%=post._id%>">
+          <p class="post-title"><%=post.title%></p>
+          <img src="<%=post.image%>" alt="" />
+          <em>
+            <p style="margin-left: 2rem">
+              Posted by <%= post.author.username %>
+            </p>
+          </em>
+          <div class="show-more">
+            <p><%=post.body%></p>
+          </div>
+        </a>
+        <div class="like">
+          <i class="lni lni-heart"></i>
+          <i class="lni lni-comments"></i>
+          <a
+            href="https://m.facebook.com/sharer.php?u=127.0.0.1:3000/post/<%=post._id%>&t=<%=post.title%>" target="_blank"
+          ><i class="lni lni-share"></i>
+        </div></a>
+          
+      </div>
+    </div>
+
+    <%});%>
+  </body>
+</html>
