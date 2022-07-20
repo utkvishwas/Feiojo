@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+require("dotenv").config();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const User = require("./models/user");
@@ -14,14 +15,14 @@ const showRoutes = require("./routes/show");
 const updateRoutes = require("./routes/update");
 const deleteRoutes = require("./routes/delete");
 
-mongoose.connect("mongodb://localhost/poster_app_7", {
+mongoose.connect("mongodb://localhost/poster_app_8", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
 app.use(
   require("express-session")({
-    secret: "hellobrother",
+    secret: process.env.EXPRESS_SECRET,
     resave: false,
     saveUninitialized: false,
   })
