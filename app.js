@@ -15,9 +15,11 @@ const showRoutes = require("./routes/show");
 const updateRoutes = require("./routes/update");
 const deleteRoutes = require("./routes/delete");
 
-mongoose.connect("mongodb://localhost/poster_app_8", {
-  useNewUrlParser: true,
+mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
 });
 
 app.use(
