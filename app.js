@@ -49,7 +49,7 @@ app.use(addRoutes);
 app.use(updateRoutes);
 app.use(deleteRoutes);
 
-const port = 3001;
+const port = process.env.PORT || 80;
 
 app.listen(port, function () {
   console.log("server has started at port " + port);
