@@ -49,8 +49,4 @@ app.use(addRoutes);
 app.use(updateRoutes);
 app.use(deleteRoutes);
 
-const port = process.env.PORT || 80;
-
-app.listen(port, function () {
-  console.log("server has started at port " + port);
-});
+app.listen(process.env.PORT || 80);
