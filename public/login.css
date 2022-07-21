@@ -19,7 +19,7 @@ button {
 
 a {
   text-decoration: none;
-  color: #313131;
+  color: #9400ff;
 }
 
 form {
@@ -37,7 +37,6 @@ input {
   border-radius: 320px;
   padding: 16px;
   background-color: #ebecf0;
-  text-shadow: 1px 1px 0 #fff;
 }
 
 input {
@@ -75,8 +74,15 @@ button:hover {
 .lastbutton {
   width: 262px;
   margin: auto;
+  font-size: 0.85rem;
 }
 
 form button {
   margin-top: 1rem;
+}
+
+.login {
+  background-color: #9400ff;
+  text-shadow: none;
+  color: whitesmoke;
 }
