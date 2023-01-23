@@ -49,4 +49,6 @@ app.use(addRoutes);
 app.use(updateRoutes);
 app.use(deleteRoutes);
 
-app.listen(process.env.PORT || 3001);
+app.listen(process.env.PORT || 3001, 
+ console.log("Server has started at http://localhost:3001") 
+  );
